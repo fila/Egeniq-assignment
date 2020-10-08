@@ -11,10 +11,10 @@ A user may tap the button as many times as they want, and each tap scrolls the l
 If there was an error fetching the data from the server or decoding it, the app shows an alert with human-readable error message.
 
 The solution utilizies the Clean Swift architecture pattern for the main (and only) scene to pursue the single-responsibility principle:
-    * `ViewController` deals with the view: creating the view, responding to the user actions and updating the view.
-    * `DataSource` holds the data that should be displayed in the table view and implements the data source methods for populating the table view cells with content.
-    * `Interactor` is responsible for handling requests from the `ViewController` (user tapping the "Show Doggies" button): it calls the `Service` which returns either a data or an error, and passes the result to the `Presenter`.
-    * `Presenter` embraces the presentation logic, converting data models or errors received from the `Interactor` to simple objects like view models and error messages respectively, and passing them on to the `ViewController` for displaying.
+ * `ViewController` deals with the view: creating the view, responding to the user actions and updating the view.
+ * `DataSource` holds the data that should be displayed in the table view and implements the data source methods for populating the table view cells with content.
+ * `Interactor` is responsible for handling requests from the `ViewController` (user tapping the "Show Doggies" button): it calls the `Service` which returns either a data or an error, and passes the result to the `Presenter`.
+ * `Presenter` embraces the presentation logic, converting data models or errors received from the `Interactor` to simple objects like view models and error messages respectively, and passing them on to the `ViewController` for displaying.
     
 Networking logic is implemented in the `Service` component, which utilizes the shared `URLSession` instance to fetch the data from the server and emit the Single observable.
 
